@@ -3,7 +3,7 @@ import {Route, Switch} from 'react-router-dom'
 import Login from './components/login/Login';
 
 export default (
-    <Route>
-        <Switch component={Login} exact path = '/' />
-    </Route>
+    <Switch>
+        <Route component={Login} exact path = '/' />
+    </Switch>
 )

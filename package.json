@@ -2,9 +2,13 @@
   "name": "login-example",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:4000",
   "dependencies": {
+    "axios": "^0.18.0",
     "dotenv": "^6.2.0",
+    "massive": "^5.7.5",
     "react": "^16.8.1",
+    "react-bootstrap-sweetalert": "^4.4.1",
     "react-dom": "^16.8.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.3"
