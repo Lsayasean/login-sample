@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SweetAlert from 'react-bootstrap-sweetalert'
 import axios from 'axios'
 
 class Login extends Component {
@@ -27,6 +28,12 @@ class Login extends Component {
         }
 
         const resp = await axios.post('/api/login', name, pass)
+        if(resp.data === 'Unauthorized'){
+            this.setState({alert: 'Please try again'})
+        }
+        if(resp.data === 'OK'){
+            this.props.history.push('/home')
+        }
     }
     render() {
         return (

@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const massive = require('massive')
+const bcrypt = require('bcryptjs')
 
 const {SERVER_PORT, CONNECTION_STRING} = process.env;
 
@@ -21,6 +22,13 @@ app.post('/api/login', async (req ,res) => {
     if(found){
         res.sendStatus(401)
     }
+
+    let salt = bcrypt.genSaltSync(10)
+    let hash = bcrypt.hashSync(pass, salt)
+
+    let [create_user] = await db.create_user([name, hash])
+
+    res.sendStatus(200)
 })
 
 app.listen(SERVER_PORT, () => {
